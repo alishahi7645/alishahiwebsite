@@ -3,7 +3,13 @@ import '../../index.css';
 
 function Home() {
   return (
-    <div>Home</div>
+    <>
+        {/* start code navbar */}
+            <nav className='w-full px-10 py-5 bg-gray-200 flex items-center '>
+
+            </nav>
+        {/* end code navbar */}
+    </>
   )
 }
 
