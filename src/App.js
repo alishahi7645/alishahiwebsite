@@ -1,3 +1,4 @@
+import About from './Components/about/About';
 import Home from './Components/home/Home';
 import Navbar from './Components/navbar/Navbar';
 import './index.css';
@@ -7,6 +8,7 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <Home/>
+      <About/>
     </BrowserRouter>
   );
 }
