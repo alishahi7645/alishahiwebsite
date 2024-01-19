@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../index.css";
 import alishahi from "../../assets/images/alishahi.jpg";
 
@@ -6,10 +6,28 @@ function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [humber, setHumber] = useState(false);
   console.log(humber);
+
+  useEffect(() => {
+    let darkmode = document.getElementById("darkmode");
+    let lightmode = document.getElementById("lightmode");
+    let flag = true;
+    let html = document.getElementById('html')
+    darkmode.addEventListener("click", function () {
+      if(flag === true){
+        html.setAttribute('class','dark')
+        flag = false;
+      }else{
+        html.setAttribute('class','')
+        flag = true;
+      }
+    });
+
+    console.log(lightmode);
+  }, []);
   return (
     <>
       {/* start code navbar */}
-      <nav className="w-full shadow-xl px-10 py-5 flex items-center justify-between ">
+      <nav className="w-full shadow-xl px-10 py-5 flex items-center justify-between dark:bg-gray-900 dark:border-b dark:border-gray-800">
         <div
           className="humber flex sm:hidden"
           onClick={() => setHumber(!humber)}
@@ -21,7 +39,7 @@ function Navbar() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-8 h-8 cursor-pointer"
+              class="w-8 h-8 cursor-pointer dark:text-gray-100"
             >
               <path
                 stroke-linecap="round"
@@ -36,7 +54,7 @@ function Navbar() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-8 h-8 cursor-pointer"
+              class="w-8 h-8 cursor-pointer dark:text-gray-200"
             >
               <path
                 stroke-linecap="round"
@@ -48,29 +66,30 @@ function Navbar() {
         </div>
         <div className="nr">
           <ul className="flex items-center justify-center hidden sm:flex">
-            <li className="font-bold m-2 text-gray-600 hover:text-gray-900">
+            <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
               <a href="">خانه</a>
             </li>
-            <li className="font-bold m-2 text-gray-600 hover:text-gray-900">
+            <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
               <a href="">درباره ما</a>
             </li>
-            <li className="font-bold m-2 text-gray-600 hover:text-gray-900">
+            <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
               <a href="">خدمات</a>
             </li>
-            <li className="font-bold m-2 text-gray-600 hover:text-gray-900">
+            <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
               <a href="">نمونه کارها</a>
             </li>
-            <li className="font-bold m-2 text-gray-600 hover:text-gray-900">
+            <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
               <a href="">تماس باما</a>
             </li>
           </ul>
         </div>
         <div className="nl flex">
-          <div className="w-12 h-12 border rounded-full ml-4 flex items-center text-center">
+          <div className="w-12 h-12 border rounded-full ml-4 flex items-center text-center dark:border-0">
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className="m-auto text-2xl"
+                id="darkmode"
               >
                 {
                   <svg
@@ -79,7 +98,7 @@ function Navbar() {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-6 h-6"
+                    class="w-6 h-6 dark:text-gray-50"
                   >
                     <path
                       stroke-linecap="round"
@@ -93,6 +112,7 @@ function Navbar() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className="m-auto text-2xl"
+                id="darkmode"
               >
                 {
                   <svg
@@ -122,7 +142,7 @@ function Navbar() {
       </nav>
       {humber ? (
         <div className="res transition">
-          <ul className="absolute border w-52 h-62 bg-red-500">
+          <ul className="absolute border w-52 h-62 bg-red-500 dark:bg-gray-900">
             <li className="font-bold m-2 transition cursor-pointer text-white border-b p-2  hover:bg-gray-700">
               <a href="" className="w-full">
                 خانه
