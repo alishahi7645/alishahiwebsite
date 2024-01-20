@@ -5,7 +5,7 @@ function Services() {
     <div className="services w-full h-full flex align-center justify-center dark:bg-gray-900">
       <div className="container py-5">
         <div className="service-title w-full text-center">
-          <h1 className="text-2xl mx-auto text-center dark:text-gray-100">
+          <h1 className="text-3xl mx-auto text-center dark:text-gray-100">
             من چیکار میکنم
           </h1>
         </div>
