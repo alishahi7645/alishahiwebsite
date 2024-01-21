@@ -1,4 +1,5 @@
 import About from './Components/about/About';
+import Freelancer from './Components/freelancer/Freelancer';
 import Home from './Components/home/Home';
 import Navbar from './Components/navbar/Navbar';
 import Portfolio from './Components/portfolio/Portfolio';
@@ -13,6 +14,7 @@ function App() {
       <About/>
       <Services/>
       <Portfolio/>
+      <Freelancer/>
     </BrowserRouter>
   );
 }
