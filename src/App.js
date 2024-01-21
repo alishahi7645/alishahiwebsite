@@ -1,4 +1,5 @@
 import About from './Components/about/About';
+import Contact from './Components/cantact/Contact';
 import Freelancer from './Components/freelancer/Freelancer';
 import Home from './Components/home/Home';
 import Navbar from './Components/navbar/Navbar';
@@ -15,6 +16,7 @@ function App() {
       <Services/>
       <Portfolio/>
       <Freelancer/>
+      <Contact/>
     </BrowserRouter>
   );
 }
