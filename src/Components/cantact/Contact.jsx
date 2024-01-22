@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 function Contact() {
   const [errors, setErrors] = useState('');
@@ -26,7 +27,12 @@ function Contact() {
         return false;
     }
     setErrors('');
-    return true;
+    
+
+    emailjs.sendForm('service_r2t2lyl','template_7sxp7md',e.target,'ZDJMA55KgGvjvCS5l')
+    .then(res =>{
+        console.log(res);
+    })
   }
 
   return (
@@ -128,6 +134,7 @@ function Contact() {
                       placeholder="نام ونام خانوادگی شما"
                       onChange={(e)=> setName(e.target.value)}
                       value={name}
+                      name="name"
                     />
                   </div>
                   <div className="w-full md:w-[300px] mb-2">
@@ -137,6 +144,7 @@ function Contact() {
                       placeholder="ایمیل شما"
                       onChange={(e)=> setEmail(e.target.value)}
                       value={email}
+                      name="email"
                     />
                   </div>
                 </div>
@@ -148,6 +156,7 @@ function Contact() {
                       placeholder="موضوع"
                       onChange={(e)=> setSubject(e.target.value)}
                       value={subject}
+                      name="subject"
                     />
                   </div>
                   <div className="mb-2">
@@ -157,6 +166,7 @@ function Contact() {
                       placeholder="پیام شما"
                       onChange={(e)=> setMessage(e.target.value)}
                       value={message}
+                      name="message"
                     />
                   </div>
                 </div>
