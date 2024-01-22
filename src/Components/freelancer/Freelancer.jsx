@@ -2,7 +2,7 @@ import React from 'react'
 
 function Freelancer() {
   return (
-    <div className="freelancer py-5 px-5 w-full bg-red-500 mb-5 dark:bg-gray-700">
+    <div className="freelancer py-5 px-5 w-full bg-red-500 dark:bg-gray-700">
         <div className="container p-5">
             <div className="freelancer-title p-5 text-center">
                 <p className="text-white text-lg mb-3">آیا شما پروژه ای دارید؟</p>
