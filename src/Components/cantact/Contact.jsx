@@ -1,39 +1,60 @@
 import React, { useState } from "react";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
 function Contact() {
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const validate = (e) =>{
-    e.preventDefault()
-    if(name === ''){
-        setErrors('لطفا نام خودرا وارد کنید');
-        return false;
+  const validate = (e) => {
+    e.preventDefault();
+    if (name === "") {
+      setErrors("لطفا نام خودرا وارد کنید");
+      return false;
+    } else if (email === "") {
+      setErrors("لطفا ایمیل خودرا برای دریافت پاسخ وارد کنید");
+      return false;
+    } else if (subject === "") {
+      setErrors("لطفا موضوع پیام را وارد کنید");
+      return false;
+    } else if (message === "") {
+      setErrors("لطفا پیام خودرا وارد  کنید");
+      return false;
     }
-    else if(email === ''){
-        setErrors('لطفا ایمیل خودرا برای دریافت پاسخ وارد کنید');
-        return false;
-    }
-    else if(subject === ''){
-        setErrors('لطفا موضوع پیام را وارد کنید');
-        return false;
-    }
-    else if(message === ''){
-        setErrors('لطفا پیام خودرا وارد  کنید');
-        return false;
-    }
-    setErrors('');
-    
+    setErrors("");
 
-    emailjs.sendForm('service_r2t2lyl','template_7sxp7md',e.target,'ZDJMA55KgGvjvCS5l')
-    .then(res =>{
-        console.log(res);
-    })
-  }
+    emailjs
+      .sendForm(
+        "service_r2t2lyl",
+        "template_7sxp7md",
+        e.target,
+        "ZDJMA55KgGvjvCS5l"
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "تبریک میگم!",
+            text: "پیام شما با موفقیت ارسال شد",
+            showCloseButton: true,
+            confirmButtonText: "تایید",
+            timer: 5000,
+          });
+        } else {
+          Swal.fire({
+            icon: "warning",
+            title: "خطا",
+            text: "پیام ارسال نشد",
+            showCloseButton: true,
+            confirmButtonText: "تایید",
+            timer: 5000,
+          });
+        }
+      });
+  };
 
   return (
     <div className="contact py-5 px-5 dark:bg-gray-900">
@@ -132,7 +153,7 @@ function Contact() {
                       type="text"
                       className="input form-control shadow bg-gray-100 py-1.5 px-3 w-full text-md border-0 outline-none dark:bg-gray-400 rounded dark:placeholder:text-white"
                       placeholder="نام ونام خانوادگی شما"
-                      onChange={(e)=> setName(e.target.value)}
+                      onChange={(e) => setName(e.target.value)}
                       value={name}
                       name="name"
                     />
@@ -142,7 +163,7 @@ function Contact() {
                       type="email"
                       className="input form-control shadow bg-gray-100 py-1.5 px-3 w-full text-md border-0 outline-none dark:bg-gray-400 rounded dark:placeholder:text-white"
                       placeholder="ایمیل شما"
-                      onChange={(e)=> setEmail(e.target.value)}
+                      onChange={(e) => setEmail(e.target.value)}
                       value={email}
                       name="email"
                     />
@@ -154,7 +175,7 @@ function Contact() {
                       type="text"
                       className="input form-control shadow mt-5 bg-gray-100 py-1.5 px-3 w-full text-md border-0 outline-none dark:bg-gray-400 rounded dark:placeholder:text-white"
                       placeholder="موضوع"
-                      onChange={(e)=> setSubject(e.target.value)}
+                      onChange={(e) => setSubject(e.target.value)}
                       value={subject}
                       name="subject"
                     />
@@ -164,7 +185,7 @@ function Contact() {
                       type="text"
                       className="input form-control shadow mt-5 bg-gray-100 py-1.5 px-3 w-full text-md border-0 outline-none dark:bg-gray-400 rounded dark:placeholder:text-white"
                       placeholder="پیام شما"
-                      onChange={(e)=> setMessage(e.target.value)}
+                      onChange={(e) => setMessage(e.target.value)}
                       value={message}
                       name="message"
                     />
