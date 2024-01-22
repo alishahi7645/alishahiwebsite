@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Contact() {
+  const [errors, setErrors] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const validate = (e) =>{
+    e.preventDefault()
+    if(name === ''){
+        setErrors('لطفا نام خودرا وارد کنید');
+        return false;
+    }
+    else if(email === ''){
+        setErrors('لطفا ایمیل خودرا برای دریافت پاسخ وارد کنید');
+        return false;
+    }
+    else if(subject === ''){
+        setErrors('لطفا موضوع پیام را وارد کنید');
+        return false;
+    }
+    else if(message === ''){
+        setErrors('لطفا پیام خودرا وارد  کنید');
+        return false;
+    }
+    setErrors('');
+    return true;
+  }
+
   return (
     <div className="contact py-5 px-5 dark:bg-gray-900">
       <div className="container p-5">
@@ -90,13 +118,16 @@ function Contact() {
           </div>
           <div className="contact-form w-full md:w-2/3 mt-4 flex align-center justify-end">
             <div className="contact-form mt-4 w-[80%] ml-0">
-              <form action="">
+              <span className="text-red-700 text-lg">{errors}</span>
+              <form action="" onSubmit={validate}>
                 <div className="form-item flex-wrap justify-between md:flex">
                   <div className="w-full md:w-[300px] mb-2">
                     <input
                       type="text"
                       className="input form-control shadow bg-gray-100 py-1.5 px-3 w-full text-md border-0 outline-none dark:bg-gray-400 rounded dark:placeholder:text-white"
                       placeholder="نام ونام خانوادگی شما"
+                      onChange={(e)=> setName(e.target.value)}
+                      value={name}
                     />
                   </div>
                   <div className="w-full md:w-[300px] mb-2">
@@ -104,6 +135,8 @@ function Contact() {
                       type="email"
                       className="input form-control shadow bg-gray-100 py-1.5 px-3 w-full text-md border-0 outline-none dark:bg-gray-400 rounded dark:placeholder:text-white"
                       placeholder="ایمیل شما"
+                      onChange={(e)=> setEmail(e.target.value)}
+                      value={email}
                     />
                   </div>
                 </div>
@@ -113,6 +146,8 @@ function Contact() {
                       type="text"
                       className="input form-control shadow mt-5 bg-gray-100 py-1.5 px-3 w-full text-md border-0 outline-none dark:bg-gray-400 rounded dark:placeholder:text-white"
                       placeholder="موضوع"
+                      onChange={(e)=> setSubject(e.target.value)}
+                      value={subject}
                     />
                   </div>
                   <div className="mb-2">
@@ -120,6 +155,8 @@ function Contact() {
                       type="text"
                       className="input form-control shadow mt-5 bg-gray-100 py-1.5 px-3 w-full text-md border-0 outline-none dark:bg-gray-400 rounded dark:placeholder:text-white"
                       placeholder="پیام شما"
+                      onChange={(e)=> setMessage(e.target.value)}
+                      value={message}
                     />
                   </div>
                 </div>
