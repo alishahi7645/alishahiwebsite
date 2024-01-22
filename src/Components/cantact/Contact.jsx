@@ -191,6 +191,14 @@ function Contact() {
                     />
                   </div>
                 </div>
+                <div className="captcha flex flex-row-reverse align-center justify-end">
+                    <p className="text-xs my-auto">برای ارسال پیام حاصل جمع دو عدد را در کادر مشخص شده وارد کنید</p>
+                    <span className="mx-2 text-2xl">0</span>
+                    <span className="mx-2 text-2xl">+</span>
+                    <span className="mx-2 text-2xl">0</span>
+                    <span className="mx-2 text-2xl">=</span>
+                    <input type="text" placeholder="حاصل جمع را وارد کنید" className="border "/>
+                </div>
                 <div className="form-item">
                   <button className="mt-5 bg-red-500 text-white py-1 px-3 rounded">
                     ارسال پیام
