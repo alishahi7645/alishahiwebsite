@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 
@@ -8,7 +8,31 @@ function Contact() {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [randomNumber1, setRandomNumber1] = useState(0);
+  const [randomNumber2, setRandomNumber2] = useState(0);
+  const [somHolder, setSomeHolder] = useState(0);
+  const [captchaValue, setCaptchaValue] = useState(0);
 
+  const generateCaptcha = () => {
+    let num1 = Math.floor(Math.random() * 10) + 1;
+    let num2 = Math.floor(Math.random() * 10) + 1;
+
+    setRandomNumber1(num1);
+    setRandomNumber2(num2);
+
+    let som = num1 + num2;
+
+    setSomeHolder(som);
+  };
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
+  const captchaHandler = (e) => {
+    setCaptchaValue(Number(e.target.value));
+  };
+  console.log(captchaValue);
   const validate = (e) => {
     e.preventDefault();
     if (name === "") {
@@ -26,34 +50,45 @@ function Contact() {
     }
     setErrors("");
 
-    emailjs
-      .sendForm(
-        "service_r2t2lyl",
-        "template_7sxp7md",
-        e.target,
-        "ZDJMA55KgGvjvCS5l"
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          Swal.fire({
-            icon: "success",
-            title: "تبریک میگم!",
-            text: "پیام شما با موفقیت ارسال شد",
-            showCloseButton: true,
-            confirmButtonText: "تایید",
-            timer: 5000,
-          });
-        } else {
-          Swal.fire({
-            icon: "warning",
-            title: "خطا",
-            text: "پیام ارسال نشد",
-            showCloseButton: true,
-            confirmButtonText: "تایید",
-            timer: 5000,
-          });
-        }
+    if (somHolder === captchaValue) {
+      emailjs
+        .sendForm(
+          "service_r2t2lyl",
+          "template_7sxp7md",
+          e.target,
+          "ZDJMA55KgGvjvCS5l"
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            Swal.fire({
+              icon: "success",
+              title: "تبریک میگم!",
+              text: "پیام شما با موفقیت ارسال شد",
+              showCloseButton: true,
+              confirmButtonText: "تایید",
+              timer: 5000,
+            });
+          } else {
+            Swal.fire({
+              icon: "warning",
+              title: "خطا",
+              text: "پیام ارسال نشد",
+              showCloseButton: true,
+              confirmButtonText: "تایید",
+              timer: 5000,
+            });
+          }
+        });
+    }else{
+      Swal.fire({
+        icon: "warning",
+        title: "خطا",
+        text: "کد امنیتی نامعتبر میباشد",
+        showCloseButton: true,
+        confirmButtonText: "تایید",
+        timer: 5000,
       });
+    }
   };
 
   return (
@@ -192,12 +227,20 @@ function Contact() {
                   </div>
                 </div>
                 <div className="captcha flex flex-row-reverse align-center justify-end">
-                    <p className="text-xs my-auto">برای ارسال پیام حاصل جمع دو عدد را در کادر مشخص شده وارد کنید</p>
-                    <span className="mx-2 text-2xl">0</span>
-                    <span className="mx-2 text-2xl">+</span>
-                    <span className="mx-2 text-2xl">0</span>
-                    <span className="mx-2 text-2xl">=</span>
-                    <input type="text" placeholder="حاصل جمع را وارد کنید" className="border "/>
+                  <p className="text-xs my-auto">
+                    برای ارسال پیام حاصل جمع دو عدد را در کادر مشخص شده وارد
+                    کنید
+                  </p>
+                  <span className="mx-2 text-2xl">{randomNumber1}</span>
+                  <span className="mx-2 text-2xl">+</span>
+                  <span className="mx-2 text-2xl">{randomNumber2}</span>
+                  <span className="mx-2 text-2xl">=</span>
+                  <input
+                    type="text"
+                    placeholder="حاصل جمع را وارد کنید"
+                    className="border "
+                    onChange={captchaHandler}
+                  />
                 </div>
                 <div className="form-item">
                   <button className="mt-5 bg-red-500 text-white py-1 px-3 rounded">
