@@ -8,8 +8,15 @@
   src: url("././assets/fonts/Yekan-Bakh-FaNum-05-Medium.ttf") format("truetype"),
     url("././assets/fonts/Yekan-Bakh-FaNum-05-Medium.woff") format("woff");
 }
+html{
+  scroll-behavior: smooth;
+}
 body {
   font-family: "medMsi";
   direction: rtl;
   text-align: right;
+  
+}
+.nonebtn{
+  display: none;
 }
