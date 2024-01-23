@@ -178,7 +178,7 @@ function Contact() {
               </div>
             </div>
           </div>
-          <div className="contact-form w-full md:w-2/3 mt-4 flex align-center justify-end">
+          <div className="contact-form w-full md:w-2/3 mt-4 flex align-center justify-center md:justify-end">
             <div className="contact-form mt-4 w-[80%] ml-0">
               <span className="text-red-700 text-lg">{errors}</span>
               <form action="" onSubmit={validate}>
@@ -227,10 +227,6 @@ function Contact() {
                   </div>
                 </div>
                 <div className="captcha flex flex-row-reverse align-center justify-end">
-                  <p className="text-xs my-auto">
-                    برای ارسال پیام حاصل جمع دو عدد را در کادر مشخص شده وارد
-                    کنید
-                  </p>
                   <div className="newcaptcha my-auto mx-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
