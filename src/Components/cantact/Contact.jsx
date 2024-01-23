@@ -234,7 +234,7 @@ function Contact() {
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
                       stroke="currentColor"
-                      class="w-5 h-5 cursor-pointer"
+                      class="w-5 h-5 cursor-pointer dark:text-gray-100"
                       onClick={generateCaptcha}
                     >
                       <path
@@ -244,14 +244,14 @@ function Contact() {
                       />
                     </svg>
                   </div>
-                  <span className="mx-2 text-2xl">{randomNumber1}</span>
-                  <span className="mx-2 text-2xl">+</span>
-                  <span className="mx-2 text-2xl">{randomNumber2}</span>
-                  <span className="mx-2 text-2xl">=</span>
+                  <span className="mx-2 text-2xl dark:text-gray-100">{randomNumber1}</span>
+                  <span className="mx-2 text-2xl dark:text-gray-100">+</span>
+                  <span className="mx-2 text-2xl dark:text-gray-100">{randomNumber2}</span>
+                  <span className="mx-2 text-2xl dark:text-gray-100">=</span>
                   <input
                     type="text"
                     placeholder="حاصل جمع را وارد کنید"
-                    className="border "
+                    className="rounded bg-gray-100 px-3 border-0 outline-none dark:bg-gray-400 dark:placeholder:text-white"
                     onChange={captchaHandler}
                   />
                 </div>

@@ -1,5 +1,6 @@
 import About from './Components/about/About';
 import Contact from './Components/cantact/Contact';
+import Footer from './Components/footer/Footer';
 import Freelancer from './Components/freelancer/Freelancer';
 import Home from './Components/home/Home';
 import Navbar from './Components/navbar/Navbar';
@@ -17,6 +18,7 @@ function App() {
       <Portfolio/>
       <Freelancer/>
       <Contact/>
+      <Footer/>
     </BrowserRouter>
   );
 }
