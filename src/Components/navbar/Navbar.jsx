@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "../../index.css";
 import alishahi from "../../assets/images/alishahi.jpg";
+import { useTranslation } from "react-i18next";
+import i18n from "../../assets/i18n";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [humber, setHumber] = useState(false);
-  console.log(humber);
+  const { t } = useTranslation();
 
   useEffect(() => {
     let darkmode = document.getElementById("darkmode");
     let lightmode = document.getElementById("lightmode");
     let flag = true;
-    let html = document.getElementById('html')
+    let html = document.getElementById("html");
     darkmode.addEventListener("click", function () {
-      if(flag === true){
-        html.setAttribute('class','dark')
+      if (flag === true) {
+        html.setAttribute("class", "dark");
         flag = false;
-      }else{
-        html.setAttribute('class','')
+      } else {
+        html.setAttribute("class", "");
         flag = true;
       }
     });
@@ -67,23 +69,37 @@ function Navbar() {
         <div className="nr">
           <ul className="flex items-center justify-center hidden sm:flex">
             <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
-              <a href="">خانه</a>
+              <a href="">{t("home")}</a>
             </li>
             <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
-              <a href="">درباره ما</a>
+              <a href="">{t("aboutme")}</a>
             </li>
             <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
-              <a href="">خدمات</a>
+              <a href="">{t("services")}</a>
             </li>
             <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
-              <a href="">نمونه کارها</a>
+              <a href="">{t("portfolio")}</a>
             </li>
             <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
-              <a href="">تماس باما</a>
+              <a href="">{t("contact")}</a>
             </li>
           </ul>
         </div>
         <div className="nl flex">
+          <div className="lan flex item-center  ml-4 ">
+            <select
+              name=""
+              id=""
+              onChange={(e) => {
+                i18n.changeLanguage(e.target.value);
+              }}
+              value={i18n.language}
+            >
+              <option value="">زبان</option>
+              <option value="fa">فارسی</option>
+              <option value="en">english</option>
+            </select>
+          </div>
           <div className="w-12 h-12 border rounded-full ml-4 flex items-center text-center dark:border-0">
             {darkMode ? (
               <button
