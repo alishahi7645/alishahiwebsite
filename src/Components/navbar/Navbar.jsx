@@ -23,8 +23,6 @@ function Navbar() {
         flag = true;
       }
     });
-    alishahifcvvdf
-    console.log(lightmode);
   }, []);
   return (
     <>
