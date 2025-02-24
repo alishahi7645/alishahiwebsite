@@ -72,7 +72,7 @@ function Navbar() {
             </li>
             <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
               <a href="">خدمات</a>
-            </li>
+            </li> 
             <li className="font-bold m-2 text-gray-600 hover:text-gray-900 dark:text-gray-200">
               <a href="">نمونه کارها</a>
             </li>
