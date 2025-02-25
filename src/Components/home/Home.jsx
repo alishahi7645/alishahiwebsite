@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import alishahi from "../../assets/images/alishahi.jpg";
+import alishahi1 from "../../assets/images/alishahi1.jpg";
 
 function Home() {
   const [showBtn, setShowBtn] = useState(false);
@@ -19,7 +20,7 @@ function Home() {
         <div className="home-img w-full lg:w-full md:w-full sm:w-full">
           <div className="h-img w-full p-10 m-auto">
             <img
-              src={alishahi}
+              src={alishahi1}
               alt=""
               className="rounded-full m-auto ml-0 w-full"
             />

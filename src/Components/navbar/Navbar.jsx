@@ -142,27 +142,27 @@ function Navbar() {
         <div className="res transition">
           <ul className="absolute border w-52 h-62 bg-red-500 dark:bg-gray-900">
             <li className="font-bold m-2 transition cursor-pointer text-white border-b p-2  hover:bg-gray-700">
-              <a href="" className="w-full">
+              <a href="#" className="w-full">
                 خانه
               </a>
             </li>
             <li className="font-bold m-2 transition cursor-pointer text-white border-b p-2  hover:bg-gray-700">
-              <a href="" className="w-full">
+              <a href='#' className="w-full">
                 درباره ما
               </a>
             </li>
             <li className="font-bold m-2 transition cursor-pointer text-white border-b p-2  hover:bg-gray-700">
-              <a href="" className="w-full">
+              <a href="#" className="w-full">
                 خدمات
               </a>
             </li>
             <li className="font-bold m-2 transition cursor-pointer text-white border-b p-2  hover:bg-gray-700">
-              <a href="" className="w-full">
+              <a href="#" className="w-full">
                 نمونه کارها
               </a>
             </li>
             <li className="font-bold m-2 transition cursor-pointer text-white border-b p-2  hover:bg-gray-700">
-              <a href="" className="w-full">
+              <a href="#" className="w-full">
                 تماس باما
               </a>
             </li>
